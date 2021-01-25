@@ -5,7 +5,7 @@ from abc import ABC, abstractmethod
 class Veiculo(ABC):  # Product
     @abstractmethod
     def buscar_cliente(self) -> None: pass
-
+ 
 class CarroLuxo(Veiculo):  # ConcreteProduct1
     def buscar_cliente(self) -> None:
         print('Carro de luxo está buscando clientes...')
