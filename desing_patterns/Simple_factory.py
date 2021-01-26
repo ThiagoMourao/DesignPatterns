@@ -18,6 +18,8 @@ class VeiculoFactory:  # Factory
     def __init__(self, tipo):
         self.carro = self.get_carro(tipo)
 
+    carros_disponiveis = ['luxo', 'popular']
+    
     @staticmethod
     def get_carro(tipo: str) -> Veiculo:
         if tipo == 'luxo':
