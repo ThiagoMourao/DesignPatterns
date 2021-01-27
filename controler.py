@@ -1,6 +1,7 @@
 from random import choice
 from desing_patterns.Simple_factory import VeiculoFactory
 from desing_patterns.factory_method import ZonaNorteVeiculoFactory, ZonaSulVeiculoFactory
+from desing_patterns.abstract_method import Filiais
 
 class testes:
         
@@ -20,3 +21,7 @@ class testes:
         for i in range(10):  
             carro = ZonaSulVeiculoFactory(choice(ZonaSulVeiculoFactory.veiculos_disponiveis))
             carro.buscar_cliente()
+
+    def abstract_method(self):
+        cliente = Filiais()
+        cliente.buscar_clientes()
