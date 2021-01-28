@@ -1,12 +1,5 @@
 from abc import ABC, abstractmethod
-
-class StringReprMixin:
-    def __str__(self):
-        params = ', '.join([f'{k}={x}' for k, x in self.__dict__.items()])
-        return f'{self.__class__.__name__}({params})'
-
-    def __repr__(self):
-        return self.__str__()
+from desing_patterns.monostate import StringReprMixin
 
 #Product
 class User(StringReprMixin):

@@ -5,6 +5,7 @@ from desing_patterns.abstract_method import Filiais
 from desing_patterns.singleton import AppSettings, AppSettings2, AppSettings3
 from desing_patterns.monostate import MonoState
 from desing_patterns.builder import UserDirector, UserBuilder
+from desing_patterns.prototype import Person, Address
 
 class testes:
         
@@ -67,3 +68,14 @@ class testes:
 
        user2 = user_director.with_address('Thiago', 'Mourao', 'Av. Primeiro de Junho')
        print(user2)
+
+    def prototype(self):
+        thiago = Person('Thiago', 'Mourao')
+        adress_thiago = Address('Av. Primeiro de Junho', '345B')
+        thiago.add_address(adress_thiago)
+        
+        wife_thiago = thiago.clone()
+        wife_thiago.firstname = 'Mary'
+
+        print(thiago)
+        print(wife_thiago)
