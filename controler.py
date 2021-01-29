@@ -6,6 +6,8 @@ from desing_patterns.singleton import AppSettings, AppSettings2, AppSettings3
 from desing_patterns.monostate import MonoState
 from desing_patterns.builder import UserDirector, UserBuilder
 from desing_patterns.prototype import Person, Address
+from desing_patterns.strategy import Order, TwentyPercent,FiftyPercent, NoDiscount, CustomDiscount
+from desing_patterns.observer import WeatherStation, Smartphone, Notebook
 
 class testes:
         
@@ -79,3 +81,39 @@ class testes:
 
         print(thiago)
         print(wife_thiago)
+
+    def strategy(self):
+        twenty_percent = TwentyPercent()
+        order = Order(1000, twenty_percent)
+        print(order.total, order.total_with_discount)
+        
+        fifty_percent = FiftyPercent()
+        order2 = Order(2000, fifty_percent)
+        print(order2.total, order2.total_with_discount)
+
+        no_discount = NoDiscount()
+        order3 = Order(2000, no_discount)
+        print(order3.total, order3.total_with_discount)
+
+        order4 = Order(10000, CustomDiscount(35.0))
+        print(order4.total, order4.total_with_discount)
+
+    def observer(self):
+        weather_station = WeatherStation()
+
+        smartphone = Smartphone('iPhone', weather_station)
+        other_smartphone = Smartphone('Android', weather_station)
+        notebook = Notebook('Dell', weather_station)
+
+        weather_station.add_observer(smartphone)
+        weather_station.add_observer(other_smartphone)
+        weather_station.add_observer(notebook)
+
+        weather_station.state = {'temperature': '30'}
+
+        weather_station.state = {'temperature': '32', 'humidity': '90'} 
+
+        weather_station.state = {'thermal_sensation': '36'}
+
+        weather_station.remove_observer(other_smartphone)
+        weather_station.reset_state()
