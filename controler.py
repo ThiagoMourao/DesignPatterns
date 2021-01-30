@@ -8,6 +8,7 @@ from desing_patterns.builder import UserDirector, UserBuilder
 from desing_patterns.prototype import Person, Address
 from desing_patterns.strategy import Order, TwentyPercent,FiftyPercent, NoDiscount, CustomDiscount
 from desing_patterns.observer import WeatherStation, Smartphone, Notebook
+from desing_patterns.command import RemoteController, LightOnCommand, Light, LightChangeColor
 
 class testes:
         
@@ -117,3 +118,30 @@ class testes:
 
         weather_station.remove_observer(other_smartphone)
         weather_station.reset_state()
+
+    def command(self):
+        bedroom_light = Light('Red', 'bedroom')
+
+        bedroom_light_on = LightOnCommand(bedroom_light)
+        bedroom_light_blue = LightChangeColor(bedroom_light, 'blue')
+        bedroom_light_red = LightChangeColor(bedroom_light, 'red')
+
+        remote = RemoteController()
+        remote.button_add_command('first_button', bedroom_light_on)
+        remote.button_add_command('second_button', bedroom_light_blue)
+        remote.button_add_command('third_button', bedroom_light_red)
+
+        remote.button_pressed('first_button')
+        remote.button_pressed_again('first_button')
+        
+        remote.button_pressed('second_button')
+        remote.button_pressed_again('second_button')
+
+        remote.button_pressed('third_button')
+        remote.button_pressed_again('third_button')
+
+        print()
+        remote.global_undo()
+
+
+
