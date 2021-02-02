@@ -1,4 +1,4 @@
-from controler import testes
+from controler import tests
 
-obj = testes()
-obj.command()
+obj = tests()
+obj.chain_of_responsibility()
