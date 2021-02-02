@@ -9,8 +9,10 @@ from desing_patterns.prototype import Person, Address
 from desing_patterns.strategy import Order, TwentyPercent,FiftyPercent, NoDiscount, CustomDiscount
 from desing_patterns.observer import WeatherStation, Smartphone, Notebook
 from desing_patterns.command import RemoteController, LightOnCommand, Light, LightChangeColor
+from desing_patterns.template_method import StylishPizza, ChocolatePizza
+from desing_patterns.chain_responsibility import HandlerABC, HandlerDEF, HandlerUnsolved
 
-class testes:
+class tests:
         
     def simple_factory(self):  
 
@@ -143,5 +145,18 @@ class testes:
         print()
         remote.global_undo()
 
+    def template_method(self):
+        pizza1 = StylishPizza()
+        pizza1.prepare()
+        print()
+        pizza2 = ChocolatePizza()
+        pizza2.prepare()
 
+    def chain_of_responsibility(self):
+        handler_unsolved = HandlerUnsolved()
+        handler_def = HandlerDEF(handler_unsolved)
+        handler_abc = HandlerABC(handler_def)
+
+        print(handler_abc.handle('B'))
+        
 
