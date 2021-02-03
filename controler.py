@@ -11,6 +11,7 @@ from desing_patterns.observer import WeatherStation, Smartphone, Notebook
 from desing_patterns.command import RemoteController, LightOnCommand, Light, LightChangeColor
 from desing_patterns.template_method import StylishPizza, ChocolatePizza
 from desing_patterns.chain_responsibility import HandlerABC, HandlerDEF, HandlerUnsolved
+from desing_patterns.state import Orderr
 
 class tests:
         
@@ -158,5 +159,10 @@ class tests:
         handler_abc = HandlerABC(handler_def)
 
         print(handler_abc.handle('B'))
+
+    def state(self):
+        order = Orderr()
+        order.reject()
+        order.reject()
         
 
