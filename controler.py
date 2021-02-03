@@ -12,6 +12,7 @@ from desing_patterns.command import RemoteController, LightOnCommand, Light, Lig
 from desing_patterns.template_method import StylishPizza, ChocolatePizza
 from desing_patterns.chain_responsibility import HandlerABC, HandlerDEF, HandlerUnsolved
 from desing_patterns.state import Orderr
+from desing_patterns.iterator import MyList
 
 class tests:
         
@@ -164,5 +165,19 @@ class tests:
         order = Orderr()
         order.reject()
         order.reject()
+
+    def iterator(self):
+        myList = MyList()
+        myList.add('Thiago')
+        myList.add('Maria')
+        myList.add('João')
+
+        for value in myList:
+            print(value)
+        
+        print()
+
+        for value in myList.reverse_iterator():
+            print(value)
         
 
