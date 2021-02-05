@@ -13,6 +13,9 @@ from desing_patterns.template_method import StylishPizza, ChocolatePizza
 from desing_patterns.chain_responsibility import HandlerABC, HandlerDEF, HandlerUnsolved
 from desing_patterns.state import Orderr
 from desing_patterns.iterator import MyList
+from desing_patterns.mediator import Chatroom, Personn
+from desing_patterns.memento import ImageEditor, Caretaker
+from desing_patterns.adapter import Control, NewControl, ControlAdapter
 
 class tests:
         
@@ -179,5 +182,52 @@ class tests:
 
         for value in myList.reverse_iterator():
             print(value)
-        
 
+    def mediator(self):
+        chat = Chatroom()
+
+        thiago = Personn('Thiago', chat)
+        maria = Personn('Maria', chat)
+        thomas = Personn('Thomas', chat)
+        jose = Personn('Jose', chat)
+
+        chat.add(maria)
+        chat.add(thiago)
+        chat.add(thomas)
+
+        thiago.broadcast('Hi guys')
+        jose.broadcast('TESTESSS')
+        print()
+
+        print(thiago.mediator.direct(sender = thomas, receiver = 'recebivel', msg = 'Ola'))
+        print(thiago.send_direct(receiver = 'recebivel', msg = 'Ola'))
+
+    def memento(self):
+        img = ImageEditor('FOTO_1.jpg', 111, 222)
+        caretaker = Caretaker(img)
+
+        caretaker.backup()
+
+        img.name = 'FOTO_2.jpg'
+        caretaker.backup()
+
+        img.name = 'FOTO_3.jpg'
+        caretaker.backup()
+
+        img.name = 'FOTO_4.jpg'
+        caretaker.backup()
+
+        img.name = 'FOTO_5.jpg'
+
+        caretaker.restore()
+        caretaker.restore()
+
+        print(img)
+
+    def adapter(self):
+        new_control = NewControl()
+
+        control = ControlAdapter(new_control)
+
+        control.right()
+        
