@@ -16,6 +16,7 @@ from desing_patterns.iterator import MyList
 from desing_patterns.mediator import Chatroom, Personn
 from desing_patterns.memento import ImageEditor, Caretaker
 from desing_patterns.adapter import Control, NewControl, ControlAdapter
+from desing_patterns.facade_observer import WeatherStationFacade
 
 class tests:
         
@@ -230,4 +231,11 @@ class tests:
         control = ControlAdapter(new_control)
 
         control.right()
+
+    def facade(self):
+        weather_station = WeatherStationFacade()
+
+        weather_station.change_state({'temperature': '30'})
+        weather_station.change_state({'temperature': '32'})
+        weather_station.change_state({'humidity': '60'})
         
