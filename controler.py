@@ -17,6 +17,8 @@ from desing_patterns.mediator import Chatroom, Personn
 from desing_patterns.memento import ImageEditor, Caretaker
 from desing_patterns.adapter import Control, NewControl, ControlAdapter
 from desing_patterns.facade_observer import WeatherStationFacade
+from desing_patterns.proxy import UserProxy
+from desing_patterns.bridge import TV, RemoteControl
 
 class tests:
         
@@ -238,4 +240,22 @@ class tests:
         weather_station.change_state({'temperature': '30'})
         weather_station.change_state({'temperature': '32'})
         weather_station.change_state({'humidity': '60'})
+
+    def proxy(self):
+        user = UserProxy('Thiago', 'Mourao')
+        print(user.firstname)
+
+        print(user.get_all_user_data())
+        #user.get_all_user_data() now in cache
+
+        for i in range(50):
+           print(user.get_all_user_data() )
+
+    def bridge(self):
+        tv = TV()
+        remote_control= RemoteControl(tv)
+        
+        remote_control.increase_volume()
+        remote_control.power()
+        remote_control.increase_volume()
         
