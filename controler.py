@@ -19,6 +19,7 @@ from desing_patterns.adapter import Control, NewControl, ControlAdapter
 from desing_patterns.facade_observer import WeatherStationFacade
 from desing_patterns.proxy import UserProxy
 from desing_patterns.bridge import TV, RemoteControl
+from desing_patterns.flyweight import AddressFactory, Client
 
 class tests:
         
@@ -258,4 +259,23 @@ class tests:
         remote_control.increase_volume()
         remote_control.power()
         remote_control.increase_volume()
-        
+
+    def flyweight(self):
+        address_factory = AddressFactory()
+
+        client5 = address_factory.get_address(street='Av. Brasil', neighbourhood='Centro', zip_code='000000-000') 
+        client6 = address_factory.get_address(street='Av. Brasil', neighbourhood='Centro', zip_code='000000-000') 
+
+        thiago = Client('Thiago')
+
+        thiago.address_number ='50'
+        thiago.address_details='Home'
+        thiago.add_address(client5)
+        thiago.list_addresses()
+
+        ana = Client('Ana')
+
+        ana.address_number ='54'
+        ana.address_details='House'
+        ana.add_address(client5)
+        ana.list_addresses()
