@@ -20,6 +20,7 @@ from desing_patterns.facade_observer import WeatherStationFacade
 from desing_patterns.proxy import UserProxy
 from desing_patterns.bridge import TV, RemoteControl
 from desing_patterns.flyweight import AddressFactory, Client
+from desing_patterns.composite import Product, Box
 
 class tests:
         
@@ -279,3 +280,27 @@ class tests:
         ana.address_details='House'
         ana.add_address(client5)
         ana.list_addresses()
+
+    def composite(self):
+        game1 = Product('FarCry', 50.00)
+        game2 = Product('GTA', 35.00)
+        game3 = Product('FIFA', 500.00)
+
+        box_games = Box('Box games...')
+        box_games.add(game1)
+        box_games.add(game2)
+        box_games.add(game3)        
+
+        smartphone1 = Product('Moto X', 4000)
+        smartphone2 = Product('iPhone', 9000)
+
+        box_smartphone = Box('Box Smartphones...')
+        box_smartphone.add(smartphone1)
+        box_smartphone.add(smartphone2)
+
+        all_box = Box('Big box...')
+        all_box.add(box_games)
+        all_box.add(box_smartphone)
+        all_box.print_content()
+
+        print(f'Total price: {all_box.get_price()}')
