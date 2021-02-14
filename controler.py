@@ -21,6 +21,7 @@ from desing_patterns.proxy import UserProxy
 from desing_patterns.bridge import TV, RemoteControl
 from desing_patterns.flyweight import AddressFactory, Client
 from desing_patterns.composite import Product, Box
+from desing_patterns.decorator import SimpleHotdog, SpecialHotdog, HotdogDecoratorAbstract, Bacon, Egg
 
 class tests:
         
@@ -304,3 +305,11 @@ class tests:
         all_box.print_content()
 
         print(f'Total price: {all_box.get_price()}')
+
+    def decorator(self):
+        simples_hotdog = SimpleHotdog()  
+
+        hotdog_decorator_abstract = HotdogDecoratorAbstract(simples_hotdog, Bacon())  
+        hotdog_decorator_abstract = HotdogDecoratorAbstract(hotdog_decorator_abstract,  Egg())
+        print(hotdog_decorator_abstract)
+
